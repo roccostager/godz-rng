@@ -56,4 +56,11 @@ Random.rollOddsTable = function(oddsTable: Types.OddsTable)
 end
 
 
+--[[ Random Interval
+For continuous values
+]]
+Random.randomInterval = function(min: number, max: number)
+    return min + (max - min) * math.random()
+end
+
 return Random
