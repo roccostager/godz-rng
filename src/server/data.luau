@@ -25,7 +25,8 @@ data.init = function()
                 vitality = { value = 0, multiplier = 0 },
                 magic    = { value = 0, multiplier = 0 },
             },
-            auras = {}
+            rolls = { strength = 0, agility = 0, vitality = 0, magic = 0 },
+            mutations = {},
         }
 
 
@@ -41,7 +42,19 @@ data.init = function()
             PlayerProfile.stats[stat].value += amount
         end
 
+        PlayerProfile.getRolls = function(stat: Types.Stat)
+            return PlayerProfile.rolls[stat]
+        end
 
+        PlayerProfile.incrementRolls = function(stat: Types.Stat, amount: number)
+           PlayerProfile.rolls[stat] += amount 
+        end
+
+        PlayerProfile.decrementRolls = function(stat: Types.Stat, amount: number)
+           PlayerProfile.rolls[stat] -= amount
+        end
+
+        
         -- Add PlayerProfile to data.profiles
         data.profiles[player] = PlayerProfile
     end)

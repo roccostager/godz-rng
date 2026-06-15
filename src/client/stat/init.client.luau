@@ -59,7 +59,7 @@ end)
 
 
 -- Client Event Listener
-RemoteEvents.statRE.OnClientEvent:Connect(function(stat: Types.Stat, value: number, change: number, critical: number)
-    ui(stat, value)
-    fx(stat, value)
+RemoteEvents.statRE.OnClientEvent:Connect(function(stat: Types.Stat, statData: Types.StatData, critical: number)
+    ui(stat, statData)
+    fx(stat, statData)
 end)

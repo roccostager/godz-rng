@@ -33,14 +33,27 @@ function reps.init(data)
 
     -- Train Remote Event
     RemoteEvents.statRE.OnServerEvent:Connect(function(player, stat: Types.Stat)
-        
+
         -- Handle Stat Incrementation
         local amount = Math.calculateMultiplier(data.profiles[player].getStatMultiplier(stat))
         local criticalFactor = Random.rollOddsTable(criticalConfig); amount *= criticalFactor
         data.profiles[player].incrementStat(stat, amount)
-        RemoteEvents.statRE:FireClient(player, stat, data.profiles[player].getStatValue(stat), amount, criticalFactor)
 
         -- Handle lucky rolls mechanic
+        data.profiles[player].incrementRolls(stat, criticalFactor)
+        if data.profiles[player].getRolls(stat) >= 10 then
+            repeat
+                data.profiles[player].decrementRolls(stat, 10)
+            until data.profiles[player].getRolls(stat) <= 10
+        end
+
+        -- Package Data into suitable groupings
+        local statData = {
+            value = data.profiles[player].getStatValue(stat),
+            change = amount,
+        }
+        
+        RemoteEvents.statRE:FireClient(player, stat, statData, criticalFactor)
 
     end)
 

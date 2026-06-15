@@ -30,7 +30,7 @@ fx.init = function(player: Player)
     local gui = player:WaitForChild("PlayerGui"):WaitForChild("Overlay")
     local rollBar = gui:WaitForChild("Roll")
 
-    local function rollbarFx(stat: Types.Stat, value: number)
+    local function rollbarFx(stat: Types.Stat, statData: number)
 
         -- Reproll Effect
         local reproll = ReplicatedStorage.UI.Effects.RepRoll:Clone()
