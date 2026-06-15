@@ -32,8 +32,18 @@ fx.init = function(player: Player)
 
     local function rollbarFx(stat: Types.Stat, statData: number)
 
+        -- Rep Effect
+
+
+        -- Roll bar fill effect
+
+
+        -- Roll bar effect, if activated
+
+
+        
         -- Reproll Effect
-        local reproll = ReplicatedStorage.UI.Effects.RepRoll:Clone()
+        local reproll = ReplicatedStorage.Assets.UI.Effects.RepRoll:Clone()
         reproll.Position = UDim2.new(Random.randomInterval(0.12, 0.88), 0, Random.randomInterval(0.1, 0.9), 0)
         Debris:AddItem(reproll, 2)
         reproll.Parent = gui
@@ -48,7 +58,7 @@ fx.init = function(player: Player)
         task.delay(0.5, function()
             local dir = -1 + 2*math.random(0, 1)
 
-            local multi = ReplicatedStorage.UI.Effects.Multi:Clone()
+            local multi = ReplicatedStorage.Assets.UI.Effects.Multi:Clone()
             multi.Position = UDim2.new(reproll.Position.X.Scale + Random.randomInterval(-0.05, 0.05), 0, reproll.Position.Y.Scale + Random.randomInterval(-0.05, 0.05), 0)
             multi.Rotation = dir * Random.randomInterval(7, 10)
 
@@ -67,11 +77,11 @@ fx.init = function(player: Player)
         local ratio = 1
 
         if ratio < 0.25 then
-            shineEffect = ReplicatedStorage.UI.Shines.s:Clone()
+            shineEffect = ReplicatedStorage.Assets.UI.Shines.s:Clone()
         elseif ratio < 0.5 then
-            shineEffect = ReplicatedStorage.UI.Shines.m:Clone()
+            shineEffect = ReplicatedStorage.Assets.UI.Shines.m:Clone()
         else
-            shineEffect = ReplicatedStorage.UI.Shines.l:Clone()
+            shineEffect = ReplicatedStorage.Assets.UI.Shines.l:Clone()
         end
 
         shineEffect.Parent = rollBar

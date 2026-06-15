@@ -60,6 +60,6 @@ end)
 
 -- Client Event Listener
 RemoteEvents.statRE.OnClientEvent:Connect(function(stat: Types.Stat, statData: Types.StatData, critical: number)
-    ui(stat, statData)
+    ui(stat, statData.value)
     fx(stat, statData)
 end)
